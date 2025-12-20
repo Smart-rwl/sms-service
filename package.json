@@ -1,16 +1,18 @@
 {
-  "dependencies": {
-    "@supabase/supabase-js": "^2.89.0",
-    "next": "^16.1.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
-  },
   "name": "sms-service",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.89.0",
+    "next": "14.2.3",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "repository": {
     "type": "git",
@@ -19,9 +21,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Smart-rwl/sms-service/issues"
-  },
   "homepage": "https://github.com/Smart-rwl/sms-service#readme"
 }
