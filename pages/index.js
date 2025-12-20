@@ -6,12 +6,20 @@ export async function getServerSideProps() {
     process.env.SUPABASE_SERVICE_KEY
   );
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("sms_messages")
     .select("*")
     .order("id", { ascending: false });
 
-  return { props: { messages: data || [] } };
+  if (error) {
+    console.error(error);
+  }
+
+  return {
+    props: {
+      messages: data || []
+    }
+  };
 }
 
 export default function Home({ messages }) {
@@ -19,24 +27,31 @@ export default function Home({ messages }) {
     <div style={{ padding: 20 }}>
       <h1>SMS Dashboard</h1>
       <hr />
-      <table border="1" width="100%" cellPadding="10">
-        <thead>
-          <tr>
-            <th>Sender</th>
-            <th>Message</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {messages.map((m) => (
-            <tr key={m.id}>
-              <td>{m.sender}</td>
-              <td>{m.message}</td>
-              <td>{m.time}</td>
+
+      {messages.length === 0 && (
+        <p>No messages received yet.</p>
+      )}
+
+      {messages.length > 0 && (
+        <table border="1" width="100%" cellPadding="10">
+          <thead>
+            <tr>
+              <th>Sender</th>
+              <th>Message</th>
+              <th>Time</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {messages.map((m) => (
+              <tr key={m.id}>
+                <td>{m.sender}</td>
+                <td>{m.message}</td>
+                <td>{m.time}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
