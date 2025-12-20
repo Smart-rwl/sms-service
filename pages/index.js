@@ -22,36 +22,12 @@ export async function getServerSideProps() {
   };
 }
 
-export default function Home({ messages }) {
+export default function Home() {
   return (
-    <div style={{ padding: 20 }}>
-      <h1>SMS Dashboard</h1>
-      <hr />
-
-      {messages.length === 0 && (
-        <p>No messages received yet.</p>
-      )}
-
-      {messages.length > 0 && (
-        <table border="1" width="100%" cellPadding="10">
-          <thead>
-            <tr>
-              <th>Sender</th>
-              <th>Message</th>
-              <th>Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            {messages.map((m) => (
-              <tr key={m.id}>
-                <td>{m.sender}</td>
-                <td>{m.message}</td>
-                <td>{m.time}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+    <div style={{ padding: 40, fontFamily: 'Arial, sans-serif' }}>
+      <h1>SMS Service Dashboard</h1>
+      <p>The homepage is working correctly.</p>
+      <p>Next step: connect Supabase dashboard view.</p>
     </div>
   );
 }
