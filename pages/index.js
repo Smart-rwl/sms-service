@@ -40,14 +40,3 @@ export default function Home({ messages }) {
     </div>
   );
 }
-
-export default function Home() {
-  return (
-    <div style={{ padding: 40 }}>
-      <h1>SMS Service Running</h1>
-      <p>Your deployment is active.</p>
-      <p>API Endpoint:</p>
-      <code>/api/receive</code>
-    </div>
-  );
-}
